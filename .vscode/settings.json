@@ -3,6 +3,11 @@
         "*.ejs": "html",
         "vector": "cpp",
         "queue": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "deque": "cpp",
+        "optional": "cpp",
+        "unordered_map": "cpp",
+        "variant": "cpp",
+        "iostream": "cpp"
     }
 }

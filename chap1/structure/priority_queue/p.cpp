@@ -5,8 +5,11 @@
 using namespace std;
 
 int main(){
-    // prioirty queue
-    priority_queue <int, vector <int>, greater <int> > pq;
+    // priority queue, 최대힙
+    priority_queue <int, vector <int> > pq;
+
+    // priority queue, 최소힙
+    priority_queue <int, vector <int>, greater <int> > qp;
 
     // push
     for(int i = 1; i <= 10; ++i){
