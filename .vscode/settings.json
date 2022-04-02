@@ -8,6 +8,7 @@
         "optional": "cpp",
         "unordered_map": "cpp",
         "variant": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "set": "cpp"
     }
 }
