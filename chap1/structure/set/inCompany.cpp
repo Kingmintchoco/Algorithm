@@ -13,13 +13,16 @@ int main(){
     cin >> n;
     for(int i = 0; i < n; ++i){
         cin >> name; cin >> isIn;
-        set <string> :: iterator it;
-        for(it = s.begin(); it != s.end(); ++it){
-            if(*it == name) s.erase(it);
-            else {
-                s.insert(name);
-                cout << name << "\n";
-            }
+        if(isIn == "enter"){
+            s.insert(name);
+        }else{
+            s.erase(name);
         }
+    }
+
+    // reverse access
+    set <string> :: reverse_iterator it;
+    for(it = s.rbegin(); it != s.rend(); ++it){
+        cout << *it << "\n";
     }
 }
