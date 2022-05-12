@@ -1,36 +1,56 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
 
-void init(){
-    ios::sync_with_stdio(false);
-    cin.tie(NULL); cout.tie(NULL);
+int N, maxnum = -1;
+string board[52];
+
+void check() {
+	int cnt = 1, cnt2 = 1;
+	for (int k = 0; k < N; k++) {
+		for (int j = 0; j < N - 1; j++) {
+			if (board[k][j] == board[k][j + 1]) cnt++;
+			else cnt = 1;
+			maxnum = max(maxnum, cnt);
+		}
+		cnt = 1;
+	}
+	for (int p = 0; p < N; p++) {
+		for (int j = 0; j < N - 1; j++) {
+			if (board[j][p] == board[j + 1][p])cnt2++;
+			else cnt2 = 1;
+			maxnum = max(maxnum, cnt2);
+		}
+		cnt2 = 1;
+	}
 }
-
-// swap
-void swap(char &a, char &b){
-    char temp = a;
-    a = b;
-    b = temp;
-}
-
-int main(){
-    init();
-    
-    // N x N -> 2차원 배열
-    vector <vector <char> > v;
-    vector <char> tmp;
-
-    int n;
-    cin >> n;
-    for(int i = 0; i < n; ++i){
-        for(int j = 0; j < n; ++j){
-            char c;
-            cin >> c;
-            tmp.push_back(c);
-        }
-        v.push_back(tmp);
-    }
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+	cin >> N;
+	for (int i = 0; i < N; i++) cin >> board[i];
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			if (i < N - 1 && j < N - 1) {
+				swap(board[i][j], board[i + 1][j]);
+				check();
+				swap(board[i][j], board[i + 1][j]);
+				swap(board[i][j], board[i][j + 1]);
+				check();
+				swap(board[i][j], board[i][j + 1]);
+			}
+			else if (i == N - 1 && j != N - 1) {
+				swap(board[i][j], board[i][j + 1]);
+				check();
+				swap(board[i][j], board[i][j + 1]);
+			}
+			else if (j == N - 1 && i != N - 1) {
+				swap(board[i][j], board[i + 1][j]);
+				check();
+				swap(board[i][j], board[i + 1][j]);
+			}		
+		}
+	}
+	cout << maxnum << "\n";
 }
